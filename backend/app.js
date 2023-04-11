@@ -15,17 +15,13 @@ const stream = rfs.createStream("access.log", {
 const buildPath = path.join(__dirname, 'build')
 const app=express();
 app.use(express.static(buildPath))
-
-
-app.options("*", cors({ origin: 'https://ahmedmrissa.vercel.app', optionsSuccessStatus: 200 }));
-
-app.use(cors({ origin: "https://ahmedmrissa.vercel.app", optionsSuccessStatus: 200 }));
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use(morgan('tiny'))
 app.use(morgan('tiny', { stream: stream }))
+
 
       
      
