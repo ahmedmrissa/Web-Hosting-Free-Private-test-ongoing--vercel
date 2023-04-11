@@ -17,9 +17,9 @@ const app=express();
 app.use(express.static(buildPath))
 
 
-app.options("*", cors({ origin: 'https://ahmedmrissa.vercel.app:10000', optionsSuccessStatus: 200 }));
+app.options("*", cors({ origin: 'https://ahmedmrissa.vercel.app', optionsSuccessStatus: 200 }));
 
-app.use(cors({ origin: "https://ahmedmrissa.vercel.app:10000", optionsSuccessStatus: 200 }));
+app.use(cors({ origin: "https://ahmedmrissa.vercel.app", optionsSuccessStatus: 200 }));
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
