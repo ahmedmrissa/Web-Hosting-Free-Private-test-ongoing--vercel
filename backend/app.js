@@ -15,17 +15,18 @@ const stream = rfs.createStream("access.log", {
 const buildPath = path.join(__dirname, 'build')
 const app=express();
 app.use(express.static(buildPath))
-app.use(cors());
+
+
+app.options("*", cors({ origin: 'https://ahmedmrissa.vercel.app:10000', optionsSuccessStatus: 200 }));
+
+app.use(cors({ origin: "https://ahmedmrissa.vercel.app:10000", optionsSuccessStatus: 200 }));
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use(morgan('tiny'))
 app.use(morgan('tiny', { stream: stream }))
-app.use(function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", "https://ahmedmrissa.vercel.app"); // update to match the domain you will make the request from
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        next();
-      });
+
       
      
 app.get('/', (req, res) => {
