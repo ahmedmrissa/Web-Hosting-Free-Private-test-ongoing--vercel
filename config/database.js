@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 mongoose.set('strictQuery', true);
 
 const MONGO_DB=process.env.MONGO_DB 
-console.log(MONGO_DB)
+
 const connect=()=>{
     mongoose.connect(MONGO_DB)
     .then(_ =>{

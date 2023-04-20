@@ -1,5 +1,5 @@
 const Product = require('../models/product.model');
-const formatResponse = require('./../utilities/format.response')
+const formatResponse = require('../utilities/format.response')
 
 const addProduct = async(product)=>{
         const newProduct = await Product.create(product);

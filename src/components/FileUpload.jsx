@@ -20,7 +20,7 @@ function FileUpload({ id ,setRemoveProduct}) {
         formData.append("photo", file);
 
         const config = {
-            url: `https://ahmedmrissa.vercel.app/product/upload/${id}`,
+            url: `https://myfirstweb-udeq.onrender.com/product/upload/${id}`,
             method: 'PUT',
             headers: { "Content-Type": "multipart/form-data" },
             data: formData

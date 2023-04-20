@@ -6,7 +6,6 @@ const userRouter=require('./controllers/user.controller');
 const productRouter=require('./controllers/product.controller');
 const orderRouter=require('./controllers/order.controller')
 
-
 const path = require('path')
 
 const stream = rfs.createStream("access.log", {
@@ -22,16 +21,13 @@ app.use(express.urlencoded({extended:true}));
 app.use(morgan('tiny'))
 app.use(morgan('tiny', { stream: stream }))
 
-
-      
-     
 app.get('/', (req, res) => {
         res.sendFile(path.join(buildPath, 'index.html'))
       })
 app.use('/user',userRouter);
 app.use('/product',productRouter)
 app.use('/order',orderRouter)
-app.use('/uploads', express.static('uploads'))
+app.use('/uploads', express.static('./uploads'))
 
 
 app.get('/',(req,res)=>{

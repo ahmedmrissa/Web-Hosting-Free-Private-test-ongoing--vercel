@@ -1,5 +1,5 @@
 const getPhotoUrl=(photoUrl)=>{
-  return 'https://ahmedmrissa.vercel.app/'+photoUrl;
+  return photoUrl;
 }
 
 export default getPhotoUrl;

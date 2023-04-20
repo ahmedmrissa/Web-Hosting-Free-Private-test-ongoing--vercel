@@ -1,8 +1,7 @@
 import axios from 'axios'
 export default axios.create({
-    baseURL:'https://mrissabackend.vercel.app/',
+    baseURL:'https://myfirstweb-udeq.onrender.com',
     headers:{
-        'Content-Type':'application/json',
-        ' mode': "cors" 
+        'Content-Type':'application/json'
     }
 })

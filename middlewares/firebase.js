@@ -14,5 +14,5 @@ const firebaseConfig = {
 console.log(process.env.APIKEY)
 const firebaseApp = initializeApp(firebaseConfig);
 
-// Get a reference to the storage service, which is used to create references in your storage bucket
+
 module.exports = getStorage(firebaseApp );

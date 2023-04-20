@@ -29,7 +29,7 @@ useEffect(() => {
 },[approveOrders])
 const approveOrder=async (id)=>{
     
-  await fetch(`https://mrissabackend.vercel.app/order/${id}/approve`, {method:"Put",headers: {
+  await fetch(`https://myfirstweb-udeq.onrender.com/order/${id}/approve`, {method:"Put",headers: {
     'Content-Type': 'application/json',
     'x-access-token': token.current
 }})
@@ -56,7 +56,7 @@ const approveOrder=async (id)=>{
 }
  const cancelOrder=async (id)=>{
     
-  await fetch(`https://mrissabackend.vercel.app/order/${id}/cancel`, {method:"Put",headers: {
+  await fetch(`https://myfirstweb-udeq.onrender.com/order/${id}/cancel`, {method:"Put",headers: {
     'Content-Type': 'application/json',
     'x-access-token': token.current
 }})

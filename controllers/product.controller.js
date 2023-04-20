@@ -12,8 +12,10 @@ const {
     uploadBytes,
     listAll,
     deleteObject,
+    getDownloadURL
 } = require("firebase/storage");
 const storage = require("../middlewares/firebase");
+
 
 
 router.post('/add', postProductValidator, validateRequestSchema, async (req, res) => {
@@ -74,15 +76,20 @@ router.put('/upload/:id', async (req, res, next) => {
         }
         try {
             const upLoadedPhoto = req.file;
+
+            const path = upLoadedPhoto.fieldname + '-' + Date.now() + '.' + upLoadedPhoto.originalname.split('.')[upLoadedPhoto.originalname.split('.').length - 1]
+            const storageRef = ref(storage);
+            const imgRef = ref(storageRef, 'uploads');
+            const imageRef = ref(imgRef, path);
             
-                const path=upLoadedPhoto.fieldname+'-'+Date.now()+'.'+upLoadedPhoto.originalname.split('.')[upLoadedPhoto.originalname.split('.').length-1]
-                const storageRef = ref(storage);
-                const imgRef = ref(storageRef, 'uploads'); 
-            const imageRef = ref(imgRef,path);
+                
+                
             const metatype = { contentType: upLoadedPhoto.mimetype, name: upLoadedPhoto.filename };
-            await uploadBytes(imageRef, upLoadedPhoto.buffer, metatype)
-            const photoUrl = `${process.env.STORAGEBUCKET}` + path
-            const result = await Product.findByIdAndUpdate(req.params.id, { photo_url: photoUrl })
+           const snapshot= await uploadBytes(imageRef, upLoadedPhoto.buffer, metatype)
+           const rt=await getDownloadURL(snapshot.ref)         
+
+
+            const result = await Product.findByIdAndUpdate(req.params.id, { photo_url: rt })
             res.json(result)
         } catch (error) {
             console.log(error)
